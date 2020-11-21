@@ -1,0 +1,20 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.8.0
+    working_directory: ~/project
+    steps:
+      - checkout
+      - run:
+          name: Running tests 
+          command: |
+            virtualenv venv
+            . venv/bin/activate
+            pip install --upgrade pip
+            pip install -r requirements.txt
+            tox -e py38
+
+
+  
