@@ -2,7 +2,7 @@ version: 2
 
 defaults: &defaults
   docker:
-    - image: circleci/python:3.7.2
+    - image: circleci/python:3.7.3
   working_directory: ~/project
 
 prepare_venv: &prepare_venv
@@ -30,10 +30,10 @@ jobs:
       - checkout:
           path: ~/project
       - run:
-          name: Run tests with Python 3.7
+          name: Run tests 
           command: |
-            sudo pip install --upgrade pip
-            pip install --user tox
+            pip install --upgrade pip
+            pip install -r requirements.txt
             tox -e py37
 
 
