@@ -5,20 +5,6 @@ defaults: &defaults
     - image: circleci/python:3.7.3
   working_directory: ~/project
 
-prepare_venv: &prepare_venv
-  run:
-    name: Create venv
-    command: |
-      python3 -m venv venv
-      source venv/bin/activate
-      pip install --upgrade pip
-
-prepare_tox: &prepare_tox
-  run:
-    name: Install tox
-    command: |
-      sudo pip install --upgrade pip
-      pip install --user tox
 
 
 jobs:
@@ -32,6 +18,8 @@ jobs:
       - run:
           name: Run tests 
           command: |
+            virtualenv venv
+            . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
             tox -e py37
