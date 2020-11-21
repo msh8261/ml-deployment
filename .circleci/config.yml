@@ -4,10 +4,10 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3
-    working_directory: ~/project
+    working_directory: ~/
     steps:
       - checkout:
-          path: ~/project
+          path: ~/packages/ml_api
       - run:
           name: Running tests 
           command: |
