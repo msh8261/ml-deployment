@@ -1,0 +1,7 @@
+.circleci*
+.env*
+*.env
+*.log
+.git
+.gitignor
+.requirements.txt
