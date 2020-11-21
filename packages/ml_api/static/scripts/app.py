@@ -1,6 +1,6 @@
 from flask import Flask 
 
-from static.scripts.app import get_logger
+from static.scripts.config import get_logger
 
 
 _logger = get_logger(logger_name = __name__)
@@ -12,7 +12,10 @@ def create_app(*, config_object) -> Flask:
 	flask_app = Flask('ml_api')
 	flask_app.config.from_object(config_object)
 
-	#important bluebprints
+	# import blueprints
+	from static.scripts.controller import pred_app
+	flask_app.register_blueprint(pred_app)
 	_logger.debug('Application instance created')
 
 	return flask_app
+

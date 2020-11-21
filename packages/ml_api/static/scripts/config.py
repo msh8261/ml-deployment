@@ -7,6 +7,8 @@ import sys
 
 PACKAGE_ROOT = pathlib.Path(__file__).resolve().parent.parent
 
+PACKAGE_ROOT_MAIN = pathlib.Path(__file__).resolve().parent.parent.parent
+
 
 FORMATTER = logging.Formatter(
     "%(asctime)s — %(name)s — %(levelname)s —"
@@ -53,8 +55,8 @@ def get_logger(*, logger_name):
 
 
 class Config:
-    DEBUG = False
-    TESTING = False
+    DEBUG = True
+    TESTING = True
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SERVER_PORT = 5000
