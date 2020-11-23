@@ -1,9 +1,9 @@
 version: '3'
 services:
   app:
-    build: .
+    build: ./packages/ml_api
     volumes:
-      - .:/app
+      - ./packages/ml_api:/app
     ports:
       - "192.168.99.100:5000:5000"    
     network_mode: "host"

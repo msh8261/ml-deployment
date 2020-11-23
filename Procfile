@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath packages/ml_api - run:app
+web: gunicorn --chdir packages/ml_api ml_api.wsgi:app

@@ -1,4 +1,9 @@
-from run import app
+from static.scripts.app import create_app
+from static.scripts.config import DevelopmentConfig, ProductionConfig
 
-if __name__ == "__main__":
+
+app = create_app(config_object= DevelopmentConfig)
+
+
+if __name__ == '__main__':
     app.run()

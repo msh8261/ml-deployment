@@ -1,9 +1,14 @@
 FROM python:3.7-alpine
-RUN mkdir /app
+
 WORKDIR /app
-ADD requirements.txt /app
-ADD run.py /app
-ADD wsgi.py /app
-RUN pip3 install -r requirements.txt
+
+#ADD ./packages/ml_api /app/
+ADD ./requirements.txt /app/requirements.txt
+ADD ./wsgi.py /app/wsgi.py
+
+RUN pip install --upgrade pip
+RUN pip install -r /app/requirements.txt
+
+
 EXPOSE 5000
 CMD ["gunicorn", "wsgi:app", "-b", "0.0.0.0:5000"]
