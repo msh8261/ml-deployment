@@ -5,7 +5,7 @@ jobs:
   build:
     docker:
       - image: circleci/python:3.7.3
-      - image: redis
+      - image: circleci/redis:alpine
     working_directory: ~/project/packages/ml_api
     steps:
       - checkout:
@@ -19,5 +19,7 @@ jobs:
             pip install -r requirements.txt
             tox -e py37
 
-
+      - run:
+          name: Wait for Redis to receive connections
+          command: dockerize -wait tcp://192.168.99.100:6379 -timeout 1m
   
