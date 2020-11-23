@@ -53,6 +53,13 @@ def get_logger(*, logger_name):
 
 
 
+class RedisConfig():
+    host = '127.0.0.1'
+    #host = '192.168.99.100'
+    port = 6379
+    db=0
+
+
 
 class Config:
     DEBUG = True
@@ -61,7 +68,6 @@ class Config:
     SECRET_KEY = 'this-really-needs-to-be-changed'
     SERVER_PORT = 5000
     UPLOAD_FOLDER = UPLOAD_FOLDER
-
 
 
 

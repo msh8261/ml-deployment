@@ -1,4 +1,5 @@
 from flask import Flask 
+import redis
 
 from static.scripts.config import get_logger
 
@@ -19,3 +20,9 @@ def create_app(*, config_object) -> Flask:
 
 	return flask_app
 
+
+
+def create_DB(*, config_object):
+	redis_ = redis.Redis(config_object.host, config_object.port, config_object.db)
+	redis_.set('last_page_visited_2', 'account2')
+	return redis_
