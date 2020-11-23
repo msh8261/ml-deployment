@@ -1,16 +1,18 @@
 version: '3'
 services:
   app:
-    image: "python:3.7.3"
     build: ./packages/ml_api
     volumes:
       - ./packages/ml_api:/app
     ports:
-      - "5000"    
+      - "192.168.99.100:5000:5000"    
+    network_mode: "host"
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
 
     depends_on:
       - redis
   redis:
     image: "redis:alpine"
-    ports:
+    EXPOSE:
       - "6379"
