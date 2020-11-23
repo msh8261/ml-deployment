@@ -9,10 +9,10 @@ services:
     network_mode: "host"
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+
+    depends_on:
+      - redis
   redis:
     image: "redis:alpine"
     ports:
       - "192.168.99.100:6379:6379"
-    network_mode: "host"
-    extra_hosts:
-      - "host.docker.internal:172.17.0.1"
